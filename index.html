@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" >
+  <title> مجلس الأباء والمعلمين</title>
+  <style>
+    html, body {
+
+        height:100%;
+        padding:0;
+        margin:0;
+    }
+    body {
+		background-color: #dddddd;
+
+	
+		animation: gradient 9s ease infinite;
+	}
+
+	
+	@keyframes gradient {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+
+        
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+    .plan{
+        text-align: center;
+        position: relative;
+    }
+    #my-div input, #my-div button {
+        font-size: 36px;
+    }
+
+    .glow-on-hover {
+		width: 220px;
+		height: 50px;
+		border: none;
+		outline: none;
+		color: #fff;
+		background: #111;
+		cursor: pointer;
+		position: relative;
+		z-index: 0;
+		border-radius: 10px;
+	}
+	
+	.glow-on-hover:before {
+		content: '';
+		background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+		position: absolute;
+		top: -2px;
+		left:-2px;
+		background-size: 400%;
+		z-index: -1;
+		filter: blur(5px);
+		width: calc(100% + 4px);
+		height: calc(100% + 4px);
+		animation: glowing 20s linear infinite;
+		opacity: 0;
+		transition: opacity .3s ease-in-out;
+		border-radius: 10px;
+	}
+	
+	.glow-on-hover:active {
+		color: #000
+	}
+	
+	.glow-on-hover:active:after {
+		background: transparent;
+	}
+	
+	.glow-on-hover:hover:before {
+		opacity: 1;
+	}
+	
+	.glow-on-hover:after {
+		z-index: -1;
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 100%;
+
+		left: 0;
+		top: 0;
+		border-radius: 10px;
+	}
+	
+	@keyframes glowing {
+		0% { background-position: 0 0; }
+		50% { background-position: 400% 0; }
+		100% { background-position: 0 0; }
+	}
+    .input-container {
+        display: flex;
+        align-items: center;
+    }
+    .input-field {
+   
+        border: 3px solid #50e311;
+		color: #ff0000;
+        font-size: 20px;
+        width: 150px;
+        text-align: center;
+    }
+    .input-label {
+        font-size: 36px;
+        margin-left: 20px;
+		color: #071568;
+    }
+    
+    .balance-label {
+        margin-left: 20px;
+    }
+    .balance-field {
+        width: 150px;
+        margin-left: 5px;
+        background-color: #50e311;
+        color: white;
+        font-size: 18px;
+        padding: 5px;
+        text-align: center;
+    }
+    .table-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 95%;
+        overflow-x: auto;
+		margin-right: 30px;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 18px;
+        text-align: center;
+		border: 1px solid #000;
+    }
+    th, td {
+        padding: 3px;
+        border: 1px solid #000000;
+    }
+    th {
+        background-color: #f8edd3;
+        color: rgb(0, 0, 0);
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    tr:hover {
+        background-color: #ddd;
+    }
+	#students-count,#dis15,#dis10,#res2,#res1,#dis5,#res3,#dis40,#dis60, #salary-count{
+		font-size: 19px;
+		font-weight: bold;
+	}
+    
+    #print-button {
+
+        position: relative;
+		float: left;
+		top:-42px;
+		margin-bottom: 40px;
+		margin-left: 20px;;
+        font-size: 24px;
+        color: rgb(255, 17, 17);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    #print-button:hover {
+        background-color: #97814a;
+    }
+    @media print { #print-button { display: none; }}
+    #option-list li,#option-list2 li {
+        padding: 5px;
+        margin: 5px;
+        background-color: #97814a;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+	.plann
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #6a53be 0%,
+    #114f13 29%,
+    #4c0b0b 67%,
+    #4a4607 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      font-size: 190px;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+    
+  </style>
+</head>
+<body>
+    <div class="container">
+		<div id="my-div">
+         
+            <!-- header [ image , h2] 2 divs -->
+			<!-- <div>
+				<svg style="background-color:#fff;" width="100%" height="70" viewBox="0 0 100 100" preserveAspectRatio="none">
+					<path id="wavepath" d="M0,0  L110,0C35,150 35,0 0,100z" fill="#282A35"></path>
+				  </svg>
+			</div> -->
+			<div >
+                <div style="display: inline-block; margin:20px 20px 20px 20px;">
+                  <h1 style="color: #950707;">الأزهر الشريف</h1>
+                  <h1 style="color: #950707;">الإدارة المركزية لمنطقة المنيا الأزهرية</h1>
+                  <h1 style="color: #950707;">إدارة رعاية الطلاب</h1>
+                </div> 
+                <div style="float: left; margin:20px 20px 20px 20px;">
+                    <img src="image.jpg" alt="My Logo" width="200" height="160" >
+                </div> 
+            </div>
+
+			<!-- <div>
+				<svg style="background-color:#fff;" width="100%" height="70" viewBox="0 0 100 100" preserveAspectRatio="none">
+					<path id="wavepath" d="M0,0  L110,0C35,150 35,0 0,100z" fill="#282A35"></path>
+				  </svg>
+			</div> -->
+
+        
+			<div >
+			
+                <div class="plan"> 
+                    <h3 class="plann"style="color:#5c0d0d;font-size:60px;font-family:bold;"> الخطة المقترحة لمجلس الأباء والمعلمين </h3>
+                </div>
+                <br><br><br>
+				<div id="option-list">
+					<ul id="my-select">
+					  <li class="glow-on-hover" data-value="0" style="background: #F5B041;color: #030303;display: inline-block; margin-right: 150px;width:200px; height: 50px;font-size:42px;text-align:center" onclick="showResult()">رياض الأطفال</li>
+					  <li class="glow-on-hover" data-value="1" style="background: #28f11e;color: #000000;display: inline-block; margin-right: 100px;width:200px; height: 50px;font-size:42px;text-align:center" onclick="showResult()">إبتدائي</li>
+					  <li class="glow-on-hover" data-value="2" style="background: #b29c4f;color: #000000;display: inline-block; margin-right: 100px;width:200px; height: 50px;font-size:42px;text-align:center" onclick="showResult()">إعدادي</li>
+					  <li class="glow-on-hover" data-value="3" style="background: #ef4af5;color: #000000;display: inline-block; margin-right: 100px;width:200px; height: 50px;font-size:42px;text-align:center" onclick="showResult()">ثانوي</li>
+					 
+					</ul>
+				  </div>
+				  <div id="result" style="display: none;">
+					<div class="input-container" style="margin-right: 200px;display: inline-block;">
+					  <label class="input-label">  عدد الطلاب  </label>
+					  <input class="input-field" id="students-input" type="number" min="0" value="" lang="ar" >
+					</div>
+					<!--
+						<div class="input-container" style="margin-right: 120px;display: inline-block;">
+					  <label class="input-label">  الرصيد المرحل  </label>
+					  <input class="input-field" id="teachers-input" type="number" min="0" value="" dir="rtl" >
+					</div>
+
+					-->
+		
+					<div class="input-container" style="margin-right: 70px;display: inline-block;">
+					  <label class="input-label">   إسم المعهد   </label>
+					  <input class="input-field" id="institute-input" type="text"  >
+					</div>
+					<div class="input-container" style="margin-right: 50px;display: inline-block;">
+					  <label class="input-label">العام الدراسي  </label>
+					  <input class="input-field" id="year-input" type="number" min="0" value="" >
+					</div>
+					<br><br><br><br><br>
+					<button class="glow-on-hover" id="generate-button" onclick="createTable()" style="margin-right:650px;width:200px; height: 60px;font-size:36px;text-align:center">إنشاء الخطة</button>
+				  </div>
+			</div>
+		</div>
+
+		
+
+		<div class="table-container" id="table-container" style="display: none;">
+			<div >
+                <div style="display: inline-block;line-height: 0.20; ">
+                  <h4>الأزهر الشريف</h4>
+                  <h4>الإدارة المركزية لمنطقة المنيا الأزهرية</h4>
+                  <h4>إدارة رعاية الطلاب</h4>
+                </div>  
+                <div style="float: left; ">
+                    <img src="image.jpg" alt="My Logo" width="120" height="100" >
+                </div> 
+            </div>
+			<div style="line-height: 0.25;">
+				<p>  السيد صاحب الفضيلة / رئيس الإدارة المركزية لمنطقة المنيا الأزهرية</p>
+				<p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; السلام عليكم ورحمة الله وبركاته </p>
+			</div>
+			<div id ="ms" style="position: relative; top:-8px">
+
+			</div>
+
+			<table >
+				<thead>
+					<tr>
+						<th style="border: 3px solid #000000;" >البيان</th>
+						<th style="border: 3px solid #000000;"> المبلغ</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td id="tete"> </td>
+                        
+						<td id="students-count"> 0 </td>					
+					</tr>
+					<tr>
+                        <td>  خصم ١٥٪  حصة  وزارة المالية  </td>
+						<td id="dis15">0</td>
+						
+					</tr>
+					<tr>
+                        <td>الباقي</td>
+						<td id="res1">0</td>
+						
+					</tr>
+					<tr>
+                        <td>    خصم ١٠ ٪  حصة   المنطقة  + حصة المجلس الأعلي للأباء والمعلمين </td>
+						<td id="dis10">0</td>
+						
+					</tr>
+					<tr>
+                        <td>الباقي</td>
+						<td id="res2">0</td>
+						
+					</tr>
+					<tr>
+                        <td> ٥ ٪  الخاصة بمكافئة العاملين بمجلس الأباء بالمعهد  </td>
+						<td id="dis5">0</td>
+						
+					</tr>
+					<tr>
+                        <td>الباقي</td>
+						<td id="res3">0</td>
+						
+					</tr>
+					<tr>
+                        <td>  نسبة ال ٤٠ ٪     للأنشطة  </td>
+						<td id="dis40">55</td>
+						
+					</tr>
+					<tr>
+                        <td>  نسبة ال  ٦٠ ٪     للخدمات التعليمية  </td>
+						<td id="dis60">0</td>
+						
+					</tr>
+					<!--
+						<tr>
+                        	<td>الرصيد المتبقي من العام الماضي</td>
+							<td id="salary-count">0</td>
+						
+						</tr>		
+					-->
+					
+				</tbody>
+			</table>
+			<br>
+			
+			<table id="my-table">
+			</table>
+			
+
+			<div >
+				<div style="line-height: 0.25;">
+					<p>  ملحوظة : - يتم التنسيق في المشروعات المنفذة بين خطط اتحاد الطلاب ومجلس الأباء للمرحلتن الإعدادية والثانوية</p>
+					<p>    بحيث لا تتكر المشاريع المنفذه في الخطتين</p>
+				</div>
+				
+				<p>   الأخصائي الإجتماعي أمين السر  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;نائب رئيس المجلس &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;رئيس المجلس شيخ المعهد</p>
+				<br><br><p>      موجه الإدارة  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; مدير الإدارة &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   أمين سر المنطقة &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الموجه العام &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  مدير رعاية الطلاب &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; يعتمد وكيل الوزارة</p>			</div>
+			<button class="glow-on-hover" style="color:white;font-size:30px" id="print-button" >طباعة / حفظ</button>
+		</div>
+		
+	</div>
+	
+
+
+    <script>
+
+
+		
+	  
+		  function Digits(numb) {
+			var id = ['٩', '٨', '٧', '٦', '٥', '٤', '٣', '٢', '١', '٠'];
+			let myStr = numb.toString()
+			let myStr1 = myStr.split("")
+			let result = []
+			myStr1.forEach(num => {
+			  switch (num) {
+				case ".":
+				  num = ","
+				  result.push(num)
+				  break;
+				case "0":
+				  num = "٠"
+				  result.push(num)
+				  break;
+				case "1":
+				  num = "١"
+				  result.push(num)
+				  break;
+				case "2":
+				  num = "٢"
+				  result.push(num)
+				  break;
+				case "3":
+				  num = "٣"
+				  result.push(num)
+				  break;
+				case "4":
+				  num = "٤"
+				  result.push(num)
+				  break;
+				case "5":
+				  num = "٥"
+				  result.push(num)
+				  break;
+				case "6":
+				  num = "٦"
+				  result.push(num)
+				  break;
+				case "7":
+				  num = "٧"
+				  result.push(num)
+				  break;
+				case "8":
+				  num = "٨"
+				  result.push(num)
+				  break;
+				case "9":
+				  num = "٩"
+				   result.push(num)
+				  break;
+			  }
+			});
+			return result.join("")
+		  }
+
+	
+		function toArabicNumeral(number) {
+			return Number(number).toLocaleString("ar-EG");
+		  }
+		  
+		function showResult() {
+			document.getElementById('option-list').style.display = 'none';
+			document.getElementById('result').style.display = 'block';
+  		}
+		
+		function createTable() {
+			const numRows = 10;
+			const table = document.getElementById('my-table');
+			table.innerHTML = '';
+			const headerRow = document.createElement('tr');	  			 					 		  
+			const headerCell1 = document.createElement('th');
+			headerCell1.textContent = ' م';
+			headerRow.appendChild(headerCell1);
+			const headerCell2 = document.createElement('th');
+			headerCell2.textContent = ' المشروعات';
+			headerRow.appendChild(headerCell2);
+			const headerCell3 = document.createElement('th');
+			headerCell3.textContent = ' طلاب';
+			headerRow.appendChild(headerCell3);
+			const headerCell4 = document.createElement('th');
+			headerCell4.textContent = ' طالبات';
+			headerRow.appendChild(headerCell4);
+			const headerCell5 = document.createElement('th');
+			headerCell5.textContent = ' مكان التنفيذ';
+			headerRow.appendChild(headerCell5);
+			const headerCell6 = document.createElement('th');
+			headerCell6.textContent = ' موعد التنفيذ';
+			headerRow.appendChild(headerCell6);
+			const headerCell7 = document.createElement('th');
+			headerCell7.textContent = 'باب أول';
+			headerRow.appendChild(headerCell7);
+			const headerCell8 = document.createElement('th');
+			headerCell8.textContent = 'باب ثاني';
+			headerRow.appendChild(headerCell8);
+			const headerCell9 = document.createElement('th');
+			headerCell9.textContent = 'إجمالي';
+			headerRow.appendChild(headerCell9);
+
+			table.appendChild(headerRow);
+
+			
+		    
+
+			for (let i = 1; i <= numRows; i++) {
+			const row = document.createElement('tr');
+	
+			const cell1 = document.createElement('td');
+			cell1.textContent = toArabicNumeral(i);
+			row.appendChild(cell1);
+
+
+			if (i==1)
+			{
+				const cell2 = document.createElement('td');
+				cell2.textContent = " معسكر خدمة عامة";
+				row.appendChild(cell2);
+			}
+			else if (i==2)
+			{
+				const cell2 = document.createElement('td');
+				cell2.textContent = "كشافة ";
+				row.appendChild(cell2);
+			}
+			else if (i==3)
+			{
+				const cell2 = document.createElement('td');
+				cell2.textContent = "رحالات ";
+				row.appendChild(cell2);
+			}
+			else if (i==4)
+			{
+				const cell2 = document.createElement('td');
+				cell2.textContent = "جماعة صحية (ابتدائي فقط) ";
+				row.appendChild(cell2);
+			}
+			else if (i==5)
+			{
+				const cell2 = document.createElement('td');
+				cell2.textContent = "مسابقة قران كريم ";
+				row.appendChild(cell2);
+			}
+			else if (i==6)
+			{
+				const cell2 = document.createElement('td');
+				cell2.textContent = "مسابقة أوائل طلاب (ابتدائي فقط) ";
+				row.appendChild(cell2);
+			}
+			else if (i==7)
+			{
+				const cell2 = document.createElement('td');
+				cell2.textContent = "الإنشاد الديني ومسرح إسلامي ";
+				row.appendChild(cell2);
+			}
+			else if (i==8)
+			{
+				const cell2 = document.createElement('td');
+				cell2.textContent = "معارض ونشاط فني ";
+				row.appendChild(cell2);
+			}
+			else if (i==9)
+			{
+				const cell2 = document.createElement('td');
+				cell2.textContent = "";
+				row.appendChild(cell2);
+			}
+			else if (i==10)
+			{
+				const cell2 = document.createElement('td');
+				cell2.textContent = "";
+				row.appendChild(cell2);
+			}
+			const cell3 = document.createElement('td');
+			cell3.textContent = ''
+			cell3.contentEditable = true; // Make the cell editable
+			cell3.classList.add('editable');
+			 
+			cell3.addEventListener('blur', function() {
+				cell3.textContent = Digits(cell3.textContent)
+			});
+			//cell3.textContent = localStorage.getItem(`row${i}-name`)
+			row.appendChild(cell3);
+			const cell4 = document.createElement('td');
+			cell4.textContent = '';
+			cell4.contentEditable = true; // Make the cell editable
+			cell4.classList.add('editable');
+	
+			cell4.addEventListener('blur', function() {
+				// Save the cell data when the user finishes editing
+				cell4.textContent = Digits(cell4.textContent)
+			});
+			row.appendChild(cell4);
+			const cell5 = document.createElement('td');
+			cell5.textContent = '';
+			cell5.contentEditable = true; // Make the cell editable
+			cell5.classList.add('editable');
+	
+			cell5.addEventListener('blur', function() {
+				// Save the cell data when the user finishes editing
+				localStorage.setItem(`row${i}-name`, cell5.textContent);
+			});
+			row.appendChild(cell5);
+			const cell6 = document.createElement('td');
+			cell6.textContent = '';
+			cell6.contentEditable = true; // Make the cell editable
+			cell6.classList.add('editable');
+	
+			cell6.addEventListener('blur', function() {
+				// Save the cell data when the user finishes editing
+				localStorage.setItem(`row${i}-name`, cell6.textContent);
+			});
+			row.appendChild(cell6);
+			const cell7 = document.createElement('td');
+			cell7.textContent = '-';
+			cell7.contentEditable = true; // Make the cell editable
+			cell7.classList.add('editable');
+	
+			cell7.addEventListener('blur', function() {
+				// Save the cell data when the user finishes editing
+				cell7.textContent = Digits(cell7.textContent)
+			});
+			row.appendChild(cell7);
+			
+			const cell8 = document.createElement('td');
+			cell8.textContent = '';
+			cell8.contentEditable = true; // Make the cell editable
+			cell8.classList.add('editable');
+	
+			cell8.addEventListener('blur', function() {
+				// Save the cell data when the user finishes editing
+				cell8.textContent = Digits(cell8.textContent)
+			});
+			row.appendChild(cell8);
+			
+			
+			const cell9 = document.createElement('td');
+			cell9.textContent = '';
+			cell9.contentEditable = true; // Make the cell editable
+			cell9.classList.add('editable');
+	
+			cell9.addEventListener('blur', function() {
+				// Save the cell data when the user finishes editing
+				cell9.textContent = Digits(cell9.textContent)
+			});
+			row.appendChild(cell9);
+			
+			table.appendChild(row);
+			
+			}
+		}
+		
+		window.onload = function() {
+			const cells = document.querySelectorAll('.editable');
+			for (let i = 0; i < cells.length; i++) {
+			const cell = cells[i];
+			const storedValue = localStorage.getItem(`row${cell.parentNode.firstElementChild.textContent}-name`);
+			if (storedValue) {
+				cell.textContent = storedValue;
+				}
+			}
+		
+		}
+		  
+		const printButton = document.getElementById('print-button');
+		printButton.onclick = () => {
+			window.print();
+		  }
+		  
+		  const studentsInput = document.getElementById('students-input');
+		  //const teachersInput = document.getElementById('teachers-input');
+		  const studentsCount = document.getElementById('students-count');
+		  
+		  
+		  const discounr15 = document.getElementById('dis15');
+		  const result1 = document.getElementById('res1');
+		  const discounr10 = document.getElementById('dis10');
+		  const result2 = document.getElementById('res2');
+		  const discounr5 = document.getElementById('dis5');
+		  const result3 = document.getElementById('res3');
+		  const discounr40 = document.getElementById('dis40');
+		  const discounr60 = document.getElementById('dis60');
+		  const teachersCount = document.getElementById('salary-count');
+		  const generateButton = document.getElementById('generate-button');
+		  const tableContainer = document.getElementById('table-container');
+		  const ulElement = document.getElementById('option-list');
+		  let selectedValue;
+  
+		  ulElement.addEventListener('click', function(event) {
+		  if (event.target && event.target.nodeName === 'LI') {
+			  selectedValue = event.target.getAttribute('data-value');
+		  }
+		  });
+		  
+		
+		  generateButton.addEventListener('click', () => {
+						console.log("Button clicked!");
+			document.body.style.backgroundColor = "white";
+
+			  studentsCount.innerHTML = studentsInput.value;
+
+
+			  const numStudents = parseInt(studentsInput.value);
+  
+			  let studentsTotal; // Declare the variable outside of the if block
+  
+			  if (selectedValue == 0) {
+				studentsTotal = numStudents * 5;
+				const institute  = document.getElementById('institute-input');
+				const instituteva = institute.value;
+				const year  = document.getElementById('year-input');
+				const yearva = year.value;
+				const studentsInputt = document.getElementById('students-input');
+				const studentsInputtt = studentsInputt.value;
+				const yearvaa = parseInt(yearva);
+				const yearvaaa = yearvaa+1;
+				const text = `	 الرجاء اعتماد الخطة المقترحة لمعهد  /  ${instituteva}    للعام الدراسي    ${Digits(yearva)} / ${Digits(yearvaaa)} لمجلس الأباء والمعليمين  `;
+				const text24 = `	  المتحصل هذا العام لعدد طلاب ${Digits(studentsInputtt)} X ٥ جنيه  `;
+				const g = document.getElementById('ms');
+				g.innerHTML = text;
+				const g2 = document.getElementById('tete');
+				g2.innerHTML = text24;
+				
+			  }
+			  if (selectedValue == 1) {
+				studentsTotal = numStudents * 5;
+				const institute  = document.getElementById('institute-input');
+				const instituteva = institute.value;
+				const year  = document.getElementById('year-input');
+				const yearva = year.value;
+				const studentsInputt = document.getElementById('students-input');
+				const studentsInputtt = studentsInputt.value;
+				const yearvaa = parseInt(yearva);
+				const yearvaaa = yearvaa+1;
+				const text = `	 الرجاء اعتماد الخطة المقترحة لروضة معهد  /  ${instituteva}    للعام الدراسي    ${Digits(yearva)} / ${Digits(yearvaaa)} لمجلس الأباء والمعليمين  `;
+				const text24 = `	  المتحصل هذا العام لعدد طلاب ${Digits(studentsInputtt)} X ٥ جنيه  `;
+				const g = document.getElementById('ms');
+				g.innerHTML = text;
+				const g2 = document.getElementById('tete');
+				g2.innerHTML = text24;
+			  }
+			  else if (selectedValue == 2) {
+				studentsTotal = numStudents * 6;
+				const institute  = document.getElementById('institute-input');
+				const instituteva = institute.value;
+				const year  = document.getElementById('year-input');
+				const yearva = year.value;
+				const studentsInputt = document.getElementById('students-input');
+				const studentsInputtt = studentsInputt.value;
+				const yearvaa = parseInt(yearva);
+				const yearvaaa = yearvaa+1;
+				const text = `	 الرجاء اعتماد الخطة المقترحة لمعهد  /  ${instituteva}    للعام الدراسي    ${Digits(yearva)} / ${Digits(yearvaaa)} لمجلس الأباء والمعليمين  `;
+				const text24 = `	  المتحصل هذا العام لعدد طلاب ${Digits(studentsInputtt)} X ٦ جنيه  `;
+				const g = document.getElementById('ms');
+				g.innerHTML = text;
+				const g2 = document.getElementById('tete');
+				g2.innerHTML = text24;
+			  }
+			  else if (selectedValue == 3) {
+				studentsTotal = numStudents * 8;
+				const institute  = document.getElementById('institute-input');
+				const instituteva = institute.value;
+				const year  = document.getElementById('year-input');
+				const yearva = year.value;
+				const studentsInputt = document.getElementById('students-input');
+				const studentsInputtt = studentsInputt.value;
+				const yearvaa = parseInt(yearva);
+				const yearvaaa = yearvaa+1;
+				const text = `	 الرجاء اعتماد الخطة المقترحة لمعهد  /  ${instituteva}    للعام الدراسي    ${Digits(yearva)} / ${Digits(yearvaaa)} لمجلس الأباء والمعليمين  `;
+				const text24 = `	  المتحصل هذا العام لعدد طلاب ${Digits(studentsInputtt)} X ٨ جنيه  `;
+				const g = document.getElementById('ms');
+				g.innerHTML = text;
+				const g2 = document.getElementById('tete');
+				g2.innerHTML = text24;
+			  }
+
+			
+			
+  
+			  studentsCount.textContent = Digits(studentsTotal)
+
+		
+			  
+			  // عدد الطلاب
+			  
+  
+			  // خصم 15 % 
+			  const discount1 = studentsTotal * 0.15;
+
+			  discounr15.textContent =  Digits(discount1.toFixed(2));
+  
+			  // الباقي 1 
+			  const resl1= studentsTotal-discount1.toFixed(2)
+			  result1.textContent =  Digits(resl1.toFixed(2));
+  
+			  // خصم 10  
+			  const discount2 = resl1.toFixed(4) * 0.10;
+			  discounr10.textContent = Digits( discount2.toFixed(2) );
+  
+			  // الباقي 2 
+			  const resl2= resl1.toFixed(4) -discount2.toFixed(2)
+			  result2.textContent = Digits( resl2.toFixed(2) );
+  
+			  // خصم 5 
+			  const discount3 = resl2.toFixed(2) * 0.05;
+			  discounr5.textContent =  Digits( discount3.toFixed(2) );
+  
+			  // الباقي 3 
+			  const resl3= resl2.toFixed(2) - discount3.toFixed(4)
+			  result3.textContent = Digits(  resl3.toFixed(2) );
+  
+			  // خصم 40 
+			  const discount4 = resl3.toFixed(4) * 0.40;
+			  discounr40.textContent =  Digits( discount4.toFixed(2) );
+  
+			  // خصم 60 
+			  const discount5 = resl3.toFixed(4) * 0.60;
+			  discounr60.textContent =  Digits(  discount5.toFixed(2) );
+		  
+			  // Update number of teachers
+			  //teachersCount.textContent = Digits(  teachersInput.value );
+		  
+			  // Hide inputs and button, show table
+			  document.querySelectorAll('.input-container, #generate-button,#my-div').forEach(elem => {
+				  elem.style.display = 'none';
+			  });
+			  tableContainer.style.display = 'block';
+		  });
+	</script>
+</body>
+</html>
